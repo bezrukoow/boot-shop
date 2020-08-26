@@ -38,23 +38,23 @@
                     <div class="span4">
                         <div class="well">
                             <h5>ALREADY REGISTERED ?</h5>
-                            <form>
+                            <form method="POST" action="/login">
                                 <div class="control-group">
-                                    <label class="control-label" for="inputEmail1">Email</label>
+                                    <label class="control-label" for="inputLogin">Login</label>
                                     <div class="controls">
-                                        <input class="span3" type="text" id="inputEmail1" placeholder="Email">
+                                        <input class="span3" type="text" id="user_name" placeholder="Enter Login"
+                                            name="user_name">
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="inputPassword1">Password</label>
+                                    <label class="control-label" for="inputPass">Password</label>
                                     <div class="controls">
-                                        <input type="password" class="span3" id="inputPassword1" placeholder="Password">
+                                        <input type="password" class="span3" id="user_pass" placeholder="Password" name="user_pass">
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <button type="submit" class="btn">Sign in</button> <a
-                                            href="/forgetpass">Forget
+                                        <button type="submit" class="btn" id="user_btn">Sign in</button> <a href="/forgetpass">Forget
                                             password?</a>
                                     </div>
                                 </div>
