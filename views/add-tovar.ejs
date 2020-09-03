@@ -1,0 +1,50 @@
+<%- include('layouts/head.ejs') %>
+
+
+
+<div id="mainBody">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar ================================================== -->
+            <%- include('layouts/sidebar.ejs') %>
+            <!-- Sidebar end=============================================== -->
+            <div class="span9">
+                <form method="POST" action="/add-tovar">
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+                        <input type="text" class="form-control" id="brand" aria-describedby="brand"
+                            placeholder="Enter Brand" name="brand">
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Model</label>
+                        <input type="text" class="form-control" id="model" placeholder="Enter Model" name="model">
+                    </div>
+                    <div class="form-group">
+                        <label for="Dimensions">Dimensions</label>
+                        <input type="text" class="form-control" id="Dimensions" placeholder="Enter Dimensions" name="Dimensions">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">price</label>
+                        <input type="number" class="form-control" id="price" placeholder="Enter price" name="price">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Add photo</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
+                      </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- =============================================== -->
+
+
+<%- include('layouts/footer.ejs') %>
