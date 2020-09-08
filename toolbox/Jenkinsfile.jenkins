@@ -15,61 +15,52 @@ pipeline  {
             steps {
                 echo 'Creating docker image ...'
                 dir('.'){
-                    // sh "docker build -t macnaer/chatterboxserver . "
+                    sh "docker build -t bezrukoov/boot-shop . "
                     echo "First stage work ..."
                 }
             }
         }
-        // stage("docker login") {
-        //     steps {
-        //         echo " ============== docker login =================="
-        //         withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-        //             sh '''
-        //             docker login -u $USERNAME -p $PASSWORD
-        //             '''
-        //         }
-        //     }
-        // }
-        // stage("docker push") {
-        //     steps {
-        //         echo " ============== pushing image =================="
-        //         sh '''
-        //         docker push macnaer/chatterboxserver:latest
-        //         '''
-        //     }
-        // }
-        // stage("docker stop") {
-        //     steps {
-        //         echo " ============== stoping all images =================="
-        //         sh '''
-        //         docker stop chatterboxserver
-        //         '''
-        //     }
-        // } 
-        // stage("docker remove") {
-        //     steps {
-        //         echo " ============== removing all docker containers =================="
-        //         sh '''
-        //         docker rm chatterboxserver
-        //         '''
-        //     }
-        // }
-        // stage("docker run") {
-        //     steps {
-        //         echo " ============== starting chatterbox server =================="
-        //         sh '''
-        //         docker run -d --restart=always --name chatterboxserver -p 3200:3200 macnaer/chatterboxserver
-        //         '''
-        //     }
-        // }
-        // stage("Deploy to stage server") {
-        //     steps {
-        //         echo " ============== Running playbook =================="
-        //         sh '''
-        //         ansible-playbook toolbox/ansible/playbooks/demloyToStageServer.yml
-        //         '''
-        //     }
-        //}
-
+        stage("docker login") {
+            steps {
+                echo " ============== docker login =================="
+                withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh '''
+                    docker login -u $USERNAME -p $PASSWORD
+                    '''
+                }
+            }
+        }
+        stage("docker push") {
+            steps {
+                echo " ============== pushing image =================="
+                sh '''
+                docker push bezrukoov/boot-shop:latest
+                '''
+            }
+        }
+        stage("docker stop") {
+            steps {
+                echo " ============== stoping all images =================="
+                sh '''
+                docker stop boot-shop
+                '''
+            }
+        } 
+        stage("docker remove") {
+            steps {
+                echo " ============== removing all docker containers =================="
+                sh '''
+                docker rm boot-shop
+                '''
+            }
+        }
+        stage("docker run") {
+            steps {
+                echo " ============== starting chatterbox server =================="
+                sh '''
+                docker run -d --restart=always --name boot-shop -p 3200:3200 bezrukoov/boot-shop
+                '''
+            }
+        }
     }
 }
